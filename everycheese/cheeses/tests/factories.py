@@ -1,5 +1,8 @@
 from django.template.defaultfilters import slugify
-import factory import factory.fuzzy
+
+import factory 
+import factory.fuzzy
+
 from ..models import Cheese
 
 class CheeseFactory(factory.django.DjangoModelFactory):
@@ -9,5 +12,5 @@ class CheeseFactory(factory.django.DjangoModelFactory):
     firmness = factory.fuzzy.FuzzyChoice(
         [x[0] for x in Cheese.Firmness.choices]
     )
-class Meta:
-    model = Cheese
+    class Meta:
+        model = Cheese
