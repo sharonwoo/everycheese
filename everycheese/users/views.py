@@ -11,7 +11,7 @@ User = get_user_model()
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
-    model = User
+    model = User # explicitly specify the model
     # These Next Two Lines Tell the View to Index
     #   Lookups by Username
     slug_field = "username"
@@ -22,9 +22,7 @@ user_detail_view = UserDetailView.as_view()
 
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
-    fields = [
-        "name",
-    ]
+    fields = ["name","bio"]
 
     # We already imported user in the View code above,
     #   remember?
