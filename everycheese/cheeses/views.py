@@ -16,3 +16,8 @@ class CheeseCreateView(
 ):  # remember to define get_absolute_url in model
     model = Cheese
     fields = ["name", "description", "firmness", "country_of_origin"]
+
+    # automatically set the value of creator, see models.py
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
